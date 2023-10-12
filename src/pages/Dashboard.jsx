@@ -7,6 +7,7 @@ import TopCoinCards from "../components/TopCoinCards";
 import CoinChart from "../components/CoinChart";
 import DemoPieChart from "../components/DemoPieChart";
 import Profile from "../components/Profile";
+import Advertisement from '../Advertisement';
 
 const url =
   "https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=6&page=1&sparkline=false&locale=en";
@@ -16,7 +17,7 @@ const Dashboard = () => {
   const [coinHistory, setCoinHistory] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  
+
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -49,26 +50,27 @@ const Dashboard = () => {
           </div>
         </div>
       ) : (
-        <div className="dashb__container">
-          <SideBar />
+        <><Advertisement /><div className="dashb__container">
+            <SideBar />
 
-          <div className="main__dashboard__container">
-            {/* Dhashboard-Header */}
-            <DashHeader />
+            <div className="main__dashboard__container">
+              {/* Dhashboard-Header */}
+              <DashHeader />
 
-            {/* Top-Crypto-Coins */}
-            <TopCoinCards data={apiData} />
+              {/* Top-Crypto-Coins */}
+              <TopCoinCards data={apiData} />
 
-            {/* History-Chart-Of-A-Single-Chart */}
-            <CoinChart coinHistory={coinHistory} />
+              {/* History-Chart-Of-A-Single-Chart */}
+              <CoinChart coinHistory={coinHistory} />
 
-            <div className="pie__profile__container">
-              <DemoPieChart />
+              <div className="pie__profile__container">
+                <DemoPieChart />
 
-              <Profile />
+                <Profile />
+                <Advertisement />
+              </div>
             </div>
-          </div>
-        </div>
+          </div></>
       )}
     </>
   );
