@@ -8,11 +8,9 @@ function App() {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <main className="container">
-      <Advertisement />
+    <><Advertisement /><main className="container">
       {isAuthenticated ? <Dashboard /> : <SignIn />}
-      <Advertisement />
-    </main>
+    </main><Advertisement /></>
   );
 }
 
